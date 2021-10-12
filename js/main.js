@@ -1,10 +1,20 @@
 $(function() {
   "use strict";
 
-  //------- Parallax -------//
-  skrollr.init({
-    forceHeight: false
+  $(window).on('scroll',function(){
+    var sticky = $('.header_area'),
+    scroll = $(window).scrollTop();
+
+    if (scroll >= 100) sticky.addClass('fixed');
+    else sticky.removeClass('fixed');
   });
+
+  $('select').niceSelect();
+
+  window.addEventListener('change',()=>$('select').niceSelect());
+
+  //------- Parallax -------//
+
 
   //------- Active Nice Select --------//
  
@@ -73,14 +83,7 @@ $(function() {
   mailChimp();
   
   //------- fixed navbar --------//  
-  $(window).scroll(function(){
-    var sticky = $('.header_area'),
-    scroll = $(window).scrollTop();
-
-    if (scroll >= 100) sticky.addClass('fixed');
-    else sticky.removeClass('fixed');
-  });
-
+ 
   //------- Price Range slider -------//
   if(document.getElementById("price-range")){
   
